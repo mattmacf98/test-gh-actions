@@ -1,5 +1,11 @@
 # test-gh-actions
 
+## 0.1.2
+
+### Patch Changes
+
+- 64df423: fetch tags
+
 ## 0.1.1
 
 ### Patch Changes
