@@ -12,3 +12,5 @@ Go to Repo → Settings
 
 Click Actions → General
 ```
+
+small change
