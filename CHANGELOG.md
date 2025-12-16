@@ -1,5 +1,12 @@
 # test-gh-actions
 
+## 0.1.3
+
+### Patch Changes
+
+- 9930bbf: flip gh order
+- 4cbfeca: small
+
 ## 0.1.2
 
 ### Patch Changes
