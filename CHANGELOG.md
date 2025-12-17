@@ -1,5 +1,11 @@
 # test-gh-actions
 
+## 0.1.6
+
+### Patch Changes
+
+- 1caff0e: messag
+
 ## 0.1.5
 
 ### Patch Changes
