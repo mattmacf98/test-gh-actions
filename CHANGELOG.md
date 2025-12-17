@@ -1,5 +1,11 @@
 # test-gh-actions
 
+## 0.1.5
+
+### Patch Changes
+
+- 31f7413: test viam build action
+
 ## 0.1.4
 
 ### Patch Changes
