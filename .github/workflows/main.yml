@@ -29,6 +29,7 @@ jobs:
           npm run build
 
       - name: Create git tag if version changed
+        id: create-tag
         run: |
           git fetch --tags
           VERSION=$(node -p "require('./package.json').version")
@@ -39,11 +40,29 @@ jobs:
 
           if git rev-parse "$TAG" >/dev/null 2>&1; then
             echo "Tag $TAG already exists. Skipping tag creation."
+            echo "created=false" >> $GITHUB_OUTPUT
           else
             git tag "$TAG"
             git push origin "$TAG"
             echo "Created tag $TAG"
+            echo "created=true" >> $GITHUB_OUTPUT
+            echo "tag=$TAG" >> $GITHUB_OUTPUT
           fi
+
+      - name: Viam Build 🚀
+        if: steps.create-tag.outputs.created == 'true'
+        run: |
+          echo "Viam Build"
+          echo "Version: ${{ steps.create-tag.outputs.tag }}"
+          echo "Ref: ${{ github.sha }}"
+          echo "Key ID: ${{ secrets.viam_key_id }}"
+          echo "Key Value: ${{ secrets.viam_key_value }}"
+        # uses: viamrobotics/build-action@v1
+        # with:
+        #   version: ${{ steps.create-tag.outputs.tag }}
+        #   ref: ${{ github.sha }}
+        #   key-id: ${{ secrets.viam_key_id }}
+        #   key-value: ${{ secrets.viam_key_value }}
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
